@@ -108,8 +108,16 @@ reachable from this one, so a second button beside it would open a second list o
 same mods, and two buttons that look alike and do the same thing is how a player ends up
 not knowing which one is theirs. His button is hidden, not disabled: his list, his
 entries and everything registered with him carry on working, and nothing of his is
-patched to do it. Put `"hideModsListButton": false` in
-`mods/configs/aslainMenu.json` to keep both on screen.
+patched to do it. To keep both on screen, put this in
+`mods/configs/aslainMenu.json`:
+
+```json
+{
+  "hideModsListButton": false
+}
+```
+
+If the file is already there, add the key inside the braces it already has.
 
 **CHAMPi** tested this window while it was being built and shaped a fair part of it.
 A good number of the features here began as his suggestions, and several others took
