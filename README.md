@@ -21,7 +21,8 @@ changed.
   has many settings
 * Apply without closing, a list of what you changed before you commit it, and undo
 * The window's own look is yours: language, font, text size, panel size, accent colour,
-  background colour, two or four columns, transparency, and the key that opens it
+  background colour, how the options are divided into columns, transparency, and the
+  key that opens it
 * 25 languages
 
 ## Installing

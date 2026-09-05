@@ -62,7 +62,7 @@ all shapes the window itself.
 | Font | The face the whole window uses |
 | Accent colour | The colour of everything highlighted, including the garage button |
 | Background colour | The window's own tone |
-| Option columns | Two or four columns of options, when the window is wide enough |
+| Option columns | Auto leaves each mod in the columns its own author laid out; two or four puts every mod in the same division, when the window is wide enough |
 | A to Z index | The letter index for the mod list: a strip beside it, a row above it, or off |
 | Panel scale | Makes the whole window larger or smaller |
 | Font size | Text only, without moving anything else |

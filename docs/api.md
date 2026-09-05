@@ -244,6 +244,32 @@ Compare the tuple, never the string. `getVersionTuple()` gives `(2, 0, 0)` and s
 three numbers whatever the release is called, while `getVersion()` returns the same
 text as the package file, padding included.
 
+## A window of your own
+
+A mod that builds its own API object, with its own settings file, gets a window of its
+own: the name on it, the mark beside it and the look of it are yours to set. On the
+shared instance these calls are ignored, since one mod does not get to restyle the
+window everybody shares.
+
+```python
+api.setWindowBranding(title='My mods', icon='gui/maps/icons/mymods/icon.png')
+api.setWindowDefaults(accent='7B4FA8', background='171A1D', columns='two')
+```
+
+`setWindowDefaults` is a starting point, never an override. A player who picks their
+own accent or column layout keeps it, and the Reset in the settings panel lands on
+your values rather than the menu's. Call it whenever you like, including while the
+window is open, and the panel follows at once.
+
+It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
+`fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font` and `fontScale`.
+That is every row of the settings panel except the menu language and the key that
+opens the window, which belong to the menu as a whole rather than to one window.
+
+To change a look right now rather than seed one, `applyWindowSettings(save=False,
+**values)` paints the open window without writing anything, which is what a preview
+button in your own GUI needs, and `revertWindowSettings()` puts back what is stored.
+
 ## Translations
 
 ```python

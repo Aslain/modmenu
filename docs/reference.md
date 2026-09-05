@@ -163,10 +163,10 @@ Branding and look are honoured only on a private API instance, meaning a mod tha
 | `revertWindowSettings()` | Drops an unsaved preview and returns to what is stored |
 | `getWindowScrollPosition()` / `setWindowScrollPosition(pos)` | Scroll memory, session only |
 | `getWindowSelectedMod()` / `setWindowSelectedMod(linkage)` | Which mod was open last, remembered by linkage rather than by row |
-| `getMultiColumnMode()` / `setMultiColumnMode(value)` | The two or four column toggle. Persisted |
+| `getMultiColumnMode()` / `setMultiColumnMode(value)` | How the options area is divided: `auto` (each mod in the columns its own template declares), `two` or `four`. Persisted |
 | `canOpenWindow()` | Whether a window can actually be shown. Everything else works without it, but nothing can be opened to look at |
 
-Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`.
+Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font` and `fontScale`. That is every row of the settings panel except the menu language and the key that opens it, which belong to the menu as a whole rather than to one window.
 
 ## The window list
 
