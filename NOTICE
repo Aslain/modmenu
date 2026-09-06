@@ -1,0 +1,27 @@
+# Third-party interfaces
+
+Mod Menu implements two mod-facing APIs that other people defined, so that a mod written
+for either one works here without a change. Their authors, and what this project does and
+does not take from them:
+
+## ModsSettings API
+
+Renat Iliev (izeberg), https://github.com/izeberg/modssettingsapi
+
+The settings API a mod calls here follows his interface. The Python side of this menu grew
+out of Aslain's enhanced edition of that API, which derives from his work. Original credit
+and copyright remain with the author. Andrii Andrushchyshyn (poliroid) contributed to that
+project and Paul Ekshmidt (Kurzdor) maintained it.
+
+## ModsList API
+
+Andrii Andrushchyshyn (poliroid), MIT, https://gitlab.com/wot-public-mods/mods-list
+
+The window-entry registry here is signature compatible with his, so a mod that registers a
+window of its own keeps working. The implementation is this project's own. Where his
+package is installed, this menu reads it at runtime and lists what registered with him;
+where it is not, this menu answers under that name so those mods still work. No file of
+his is contained in this repository or in the released `aslain.modmenu_<version>.wotmod`.
+
+If any code here is ever found to derive from either project, tell me which lines and the
+notice for that project will be carried with it, as its licence asks.
