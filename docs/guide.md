@@ -62,13 +62,16 @@ all shapes the window itself.
 | Font | The face the whole window uses |
 | Accent colour | The colour of everything highlighted, including the garage button |
 | Background colour | The window's own tone |
-| Option columns | Auto leaves each mod in the columns its own author laid out; two or four puts every mod in the same division, when the window is wide enough |
+| Option columns | Auto gives each mod the columns its own author laid out, sharing the row equally between them; two or four puts every mod in the same division, when the window is wide enough |
 | A to Z index | The letter index for the mod list: a strip beside it, a row above it, or off |
-| Panel scale | Makes the whole window larger or smaller |
+| Panel scale | Makes the whole window larger or smaller. On a narrow screen it stops where the header still fits its buttons |
 | Font size | Text only, without moving anything else |
 | Open hotkey | The key that opens the window. Right click it for default and clear |
 | Transparent window | Lets the garage show through the options area |
 | Transparency | How much shows through |
+
+A click on the number between the minus and the plus of panel scale, font size or
+transparency puts that one setting back to its default.
 
 **Reset** in that panel's header puts all of the above back, and leaves every mod's own
 settings alone. It asks first.

@@ -256,6 +256,10 @@ api.setWindowBranding(title='My mods', icon='gui/maps/icons/mymods/icon.png')
 api.setWindowDefaults(accent='7B4FA8', background='171A1D', columns='two')
 ```
 
+In `auto` a mod is laid out in the columns its own template declares, and they share
+the options area equally: two columns take half each, three a third each, four a
+quarter each. A template declaring one column takes half the row.
+
 `setWindowDefaults` is a starting point, never an override. A player who picks their
 own accent or column layout keeps it, and the Reset in the settings panel lands on
 your values rather than the menu's. Call it whenever you like, including while the
