@@ -103,6 +103,39 @@ button drawn beside the control.
 `templates.generateOptions(entries)` turns a list of strings into the option dicts the
 dropdown and the radio group expect.
 
+### A colour picker limited to your own palette
+
+`presets` adds a row of your colours to the picker. `presetsOnly=True` takes away
+everything else - the spectrum, the RGB sliders and the hex field - so the player can
+pick one of your colours and cannot type a value of their own.
+
+```python
+CLASS_COLORS = ['980000', 'C3A500', '467900', '005FA5', '7D28A5']
+
+templates.createColorChoice(
+    'Heavy tank colour', 'colorHT', '980000',
+    presets=CLASS_COLORS,
+    presetsOnly=True,
+)
+```
+
+Up to 24 colours, laid out in rows of twelve, with or without a leading `#`. The same
+two arguments work on `createCheckboxColor`. `presets` on its own leaves the full
+picker in place and simply offers your colours beside it; `presetsOnly` without
+`presets` does nothing, since there would be nothing left to pick from.
+
+Both are newer than the first release of either edition - Gameface 2.0.0, Flash 1.5.0 -
+and older builds raise `TypeError` rather than ignoring them, so gate on the version
+or catch it:
+
+```python
+try:
+    control = templates.createColorChoice(
+        text, varName, value, presets=CLASS_COLORS, presetsOnly=True)
+except TypeError:
+    control = templates.createColorChoice(text, varName, value)
+```
+
 ## Layout
 
 ```python
