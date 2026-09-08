@@ -3,6 +3,9 @@
 Cold information. One line per change: what was fixed or added, and the condition it
 happened under. No background, no account of how it was found, no names, no thanks.
 
+Only what CHANGED. A section saying nothing changed, or that some part behaves as it
+did, is not a release note - drop the section instead of writing it.
+
 ---
 
 **Fixed**
@@ -15,7 +18,8 @@ happened under. No background, no account of how it was found, no names, no than
 
 **For mod authors**
 
-Only when a mod author has to do something. Say what to change.
+Only when a mod author has to do something. Say what to change. If there is nothing,
+the section does not appear.
 
 ---
 
