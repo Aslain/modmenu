@@ -60,8 +60,8 @@ all shapes the window itself.
 | --- | --- |
 | Language | The menu and every mod that offers translations |
 | Font | The face the whole window uses |
-| Accent colour | The colour of everything highlighted, including the garage button |
-| Background colour | The window's own tone |
+| Accent color | The color of everything highlighted, including the garage button |
+| Background color | The window's own tone |
 | Option columns | Auto gives each mod the columns its own author laid out, sharing the row equally between them; two or four puts every mod in the same division, when the window is wide enough |
 | A to Z index | The letter index for the mod list: a strip beside it, a row above it, or off |
 | Panel scale | Makes the whole window larger or smaller. On a narrow screen it stops where the header still fits its buttons |
@@ -95,7 +95,7 @@ instead, so you are more likely to meet this when you installed the file by hand
 | Up and Down | Move through the mod list |
 | Left and Right | Move the slider under the cursor |
 | ESC | Step back, then close the window |
-| Right click | Options for hotkeys and colour slots |
+| Right click | Options for hotkeys and color slots |
 
 The question mark in the window's header shows this list with your own key bindings in
 it.

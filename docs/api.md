@@ -94,7 +94,7 @@ button drawn beside the control.
 | `createInput` | `value`, `width`, `textArea`, `textRows`, `textColumns` |
 | `createHotkey` | `value`, `float` |
 | `createColorChoice` | `value`, `presets`, `presetsOnly`, `enableAlpha` |
-| `createCheckboxColor` | `value`, `color`, and the colour arguments above |
+| `createCheckboxColor` | `value`, `color`, and the color arguments above |
 | `createLabel` | text only, plus a tooltip |
 | `createImage` | `source`, `width`, `height`, `align`, `valign`, `containerWidth`, `containerHeight`, `autoFit`, `label`, `labelAlign`, `atlas` |
 | `createActionButton` | `buttonText`, `label`, `icon`, `width`, `height`, `align` |
@@ -103,30 +103,75 @@ button drawn beside the control.
 `templates.generateOptions(entries)` turns a list of strings into the option dicts the
 dropdown and the radio group expect.
 
-### A colour picker limited to your own palette
+Two arguments in that table are worth a sentence. `createNumericStepper(..., manual=True)`
+lets the player type the number instead of only stepping to it.
+`createHotkey(..., float='right')` floats the keys to the right and wraps a long label
+around them - narrow beside them on the first line, full width underneath - where the
+default `'none'` keeps the label in the narrow column to their left. Plain-text labels
+only: a label containing markup keeps the default.
 
-`presets` adds a row of your colours to the picker. `presetsOnly=True` takes away
+### Text fields
+
+```python
+templates.createInput('Greeting', 'greeting', 'Hello', width=260, maxLength=40)
+
+templates.createInput(
+    'Message of the day', 'motd', '<b>Hello</b><br>and welcome',
+    textArea=True, textRows=4, textColumns=60,
+    valueIsHTML=True, convertNLtoBR=True,
+    monospace=True, span=2,
+)
+```
+
+`textArea` makes the field multi-line and `textRows` says how many lines of it are
+visible. `maxLength` caps the whole value; `textColumns` caps a single LINE of it.
+That second one is a count of characters and not a width - markup included, so
+`<b>hello</b>` is twelve - because this engine exposes no text geometry to measure
+against. Typing past the cap simply does nothing on that line.
+
+`valueIsHTML` says the value your mod stores is markup rather than plain text.
+`convertNLtoBR` builds on it: the player sees `<br>` as real line breaks and gets
+them back as `<br>` when the value returns to you. The conversion happens only at
+that boundary, so what is stored and what your callback receives keep exactly the
+shape you gave them. It needs `valueIsHTML=True`, which is how the field knows a
+`<br>` in the value is a tag and not something the player typed.
+
+`monospace` renders this one field in a fixed-width font whatever the menu is set
+to, for a text area whose columns should line up.
+
+`span` is how many COLUMNS the control takes, counted from its own. It is the only
+way to be wider than a column: a width you declare is capped at the column, so a
+control can never spill over its neighbour.
+
+### A color picker limited to your own palette
+
+`presets` adds a row of your colors to the picker. `presetsOnly=True` takes away
 everything else - the spectrum, the RGB sliders and the hex field - so the player can
-pick one of your colours and cannot type a value of their own.
+pick one of your colors and cannot type a value of their own.
 
 ```python
 CLASS_COLORS = ['980000', 'C3A500', '467900', '005FA5', '7D28A5']
 
 templates.createColorChoice(
-    'Heavy tank colour', 'colorHT', '980000',
+    'Heavy tank color', 'colorHT', '980000',
     presets=CLASS_COLORS,
     presetsOnly=True,
 )
 ```
 
-Up to 24 colours, laid out in rows of twelve, with or without a leading `#`. The same
+Up to 24 colors, laid out in rows of twelve, with or without a leading `#`. The same
 two arguments work on `createCheckboxColor`. `presets` on its own leaves the full
-picker in place and simply offers your colours beside it; `presetsOnly` without
+picker in place and simply offers your colors beside it; `presetsOnly` without
 `presets` does nothing, since there would be nothing left to pick from.
 
-Both are newer than the first release of either edition - Gameface 2.0.0, Flash 1.5.0 -
-and older builds raise `TypeError` rather than ignoring them, so gate on the version
-or catch it:
+`enableAlpha=True` is the other argument worth knowing about here, and it changes the
+shape of what you store: the picker gains an alpha channel and the value carries eight
+hex digits (`rrggbbaa`) instead of six. A six-digit default is read as fully opaque.
+Gameface edition only.
+
+Both `presetsOnly` and `enableAlpha` are newer than the first release of either edition -
+Gameface 2.0.0, Flash 1.5.0 - and older builds raise `TypeError` rather than ignoring
+them, so gate on the version or catch it:
 
 ```python
 try:
@@ -148,7 +193,7 @@ templates.visibleWhenAny(control, conditions)
 templates.markNew(control, token='1.4.0')
 ```
 
-`enableWhen` greys a control out, `visibleWhen` takes it off the panel and closes the gap.
+`enableWhen` grays a control out, `visibleWhen` takes it off the panel and closes the gap.
 `markNew` flares the row until the player has seen it, and counts it beside your mod's
 name until then.
 
@@ -201,6 +246,14 @@ For animation, `atlas={'source': ..., 'frameWidth': ..., 'frameHeight': ..., 'co
 ..., 'count': ..., 'fps': ..., 'loop': True}` plays a sprite sheet, and
 `updateImageAtlas` swaps it while the window is open.
 
+### An image slot that starts empty
+
+`createImage(..., collapsed=True)` starts the image as a zero-height slot rather than
+reserving the full container, for the case where the default state shows no picture.
+Call `updateImage()` with a path to expand it, and `updateImage(..., removeImage=True)`
+to collapse it again - the controls below jump up, and `source`, `width` and `height`
+are ignored on that call.
+
 ## Live updates
 
 ```python
@@ -239,6 +292,23 @@ g_modsSettingsApi.onWindowOpened += onOpened
 
 Check the linkage in handlers that carry one. Every mod's events reach every subscriber,
 so a mod acting on another mod's linkage is acting on something that is not its own.
+
+Buttons have a second route that spares you that check: pass `buttonHandler` to
+`setModTemplate` or `registerCallback` and it is called for your own buttons only, the
+way `callback` is called for your own settings.
+
+```python
+def onButton(linkage, varName, value):
+    ...
+
+g_modsSettingsApi.setModTemplate(LINKAGE, template, onSettings, onButton)
+```
+
+Buttons have a second route that skips the subscription entirely: pass 
+to  or  and it is called for your own buttons only,
+the way  is called for your own settings.
+
+
 
 The instance carries further events beyond these. They drive the window's own machinery,
 such as image and preview traffic, and are not part of what a mod should rely on.
@@ -293,7 +363,7 @@ api.registerStyle('my.mod', '''
 Nothing in that sheet is trusted. It is taken apart, filtered and rewritten before it
 reaches the document, so a rule cannot reach outside the mod that registered it.
 
-**Properties that survive.** Colour and nothing else: `color`, `background`,
+**Properties that survive.** Color and nothing else: `color`, `background`,
 `background-color`, `border-color` and its four sides, `outline-color`, `fill`,
 `stroke`, `opacity`. Every other declaration is dropped, so layout, size, spacing and
 fonts stay the window's own. A value containing `url(`, `expression(`, `javascript:`,
@@ -312,7 +382,7 @@ furniture (`mm-window`, `mm-header`, `mm-footer`, `mm-sidebar`, `mm-root`,
 field, `.mm-key` a hotkey chip. In the list: `.mm-row` your row, `.mm-row-name` its
 text, `.mm-row-dot` the dot beside it, `.mm-badge-new` the new-options counter.
 
-**What it cannot reach today.** The menu's own CSS variables. The colours of the
+**What it cannot reach today.** The menu's own CSS variables. The colors of the
 new-option flare live in `--mm-flare-strong`, `--mm-flare-soft`, `--mm-flare-none` and
 the three `--mm-sheen-*` beside them, all derived from the accent the player chose, and
 a custom property is not one of the properties above, so setting one has no effect.
@@ -320,7 +390,7 @@ a custom property is not one of the properties above, so setting one has no effe
 A word on what this is for. The window has one look, chosen by the player, and a mod
 that repaints its whole section fights that choice rather than the menu. It is meant
 for a mod with an identity of its own to carry a little of it - a section header in
-its colour, a label picked out - not for a second theme inside somebody else's window.
+its color, a label picked out - not for a second theme inside somebody else's window.
 
 ## A window of your own
 

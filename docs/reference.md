@@ -29,8 +29,8 @@ Every builder returns a plain dictionary. A template is a dictionary of two list
 | `createNumericStepper(text, varName, value, min, max, interval, ..., manual)` | A number with plus and minus. `manual=True` lets it be typed |
 | `createInput(text, varName, value, ..., width)` | A text field |
 | `createHotkey(text, varName, value, ..., float)` | A key combination |
-| `createColorChoice(text, varName, value, ..., presets, presetsOnly, enableAlpha)` | A colour |
-| `createCheckboxColor(text, varName, value, color, ...)` | A colour with its own on and off. The value is a dict of `enabled` and `color` |
+| `createColorChoice(text, varName, value, ..., presets, presetsOnly, enableAlpha)` | A color |
+| `createCheckboxColor(text, varName, value, color, ...)` | A color with its own on and off. The value is a dict of `enabled` and `color` |
 | `createLabel(text, tooltip, tooltipIcon, useHTML)` | Text, no value |
 | `createImage(source, width, height, ..., align, valign, containerWidth, containerHeight, collapsed, label, labelAlign, atlas, autoFit)` | A picture in the panel |
 | `createEmpty(height)` | Vertical space. Defaults to 20 |
@@ -57,8 +57,8 @@ These are what the ones above are made of. Reach for them only to build a contro
 | Builder | What it does |
 | --- | --- |
 | `generateOptions(entries)` | Builds the `options` list for dropdowns and radio groups. Accepts plain strings, pairs of label and tooltip, or dicts |
-| `createControlsGroup(master, children, indent=True)` | Children are greyed out while a boolean master is off, and indented under it |
-| `enableWhen(control, masterVarName, value, indent, condition)` | Greys the control out unless the master's value satisfies the condition |
+| `createControlsGroup(master, children, indent=True)` | Children are grayed out while a boolean master is off, and indented under it |
+| `enableWhen(control, masterVarName, value, indent, condition)` | Grays the control out unless the master's value satisfies the condition |
 | `visibleWhen(control, masterVarName, value, indent, condition)` | Same test, but the control is hidden and the panel closes the gap |
 | `enableWhenAll(control, conditions, indent)` | Every condition must hold |
 | `enableWhenAny(control, conditions, indent)` | Any one is enough |
@@ -119,13 +119,13 @@ The highlight clears permanently the moment the user clicks the row or changes t
 | `hasInputPreview(linkage, varName)` | Whether one is registered |
 | `setInputPreview(linkage, varName, content, token=None)` | Answers a preview request. Accepts the same markup as a label |
 
-## Colours
+## Colors
 
 | Method | What it does |
 | --- | --- |
 | `getUserColorPresets()` | The user's palette, 48 slots, each a six digit hex string or `None` |
 | `setUserColorPresets(presets)` | Writes it |
-| `getColorValueDefault(linkage, varName)` | The default colour of one control |
+| `getColorValueDefault(linkage, varName)` | The default color of one control |
 | `requestColorValueReset(linkage, varName)` | Pushes that default back into the open window |
 | `userPresetAction(action, slot)` | Relays a palette context menu pick |
 
@@ -145,7 +145,7 @@ The highlight clears permanently the moment the user clicks the row or changes t
 | Method | What it does |
 | --- | --- |
 | `registerIcon(linkage, source)` | An icon beside your mod in the list and in its header. `None` removes it |
-| `registerStyle(linkage, css)` | Restyles your own section. Only colour properties survive and every selector is scoped to your panel |
+| `registerStyle(linkage, css)` | Restyles your own section. Only color properties survive and every selector is scoped to your panel |
 | `getModIcons()` | Every registered icon |
 | `getModStyles()` | Every registered style |
 
