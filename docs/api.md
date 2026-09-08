@@ -244,6 +244,51 @@ Compare the tuple, never the string. `getVersionTuple()` gives `(2, 0, 0)` and s
 three numbers whatever the release is called, while `getVersion()` returns the same
 text as the package file, padding included.
 
+## Restyling your own section
+
+`registerStyle(linkage, css)` hands the window a stylesheet for one mod. Call it
+again to replace it, pass `None` or an empty string to drop it.
+
+```python
+api.registerStyle('my.mod', '''
+    .mm-comp-label { color: #C8D8E8; }
+    .mm-section .mm-comp-label { color: #7BA7D0; }
+    .mm-row-name { color: #C8D8E8; }
+''')
+```
+
+Nothing in that sheet is trusted. It is taken apart, filtered and rewritten before it
+reaches the document, so a rule cannot reach outside the mod that registered it.
+
+**Properties that survive.** Colour and nothing else: `color`, `background`,
+`background-color`, `border-color` and its four sides, `outline-color`, `fill`,
+`stroke`, `opacity`. Every other declaration is dropped, so layout, size, spacing and
+fonts stay the window's own. A value containing `url(`, `expression(`, `javascript:`,
+`@import` or `!important` is dropped too.
+
+**Selectors are rewritten, not obeyed.** A selector naming `mm-row` is scoped to that
+mod's row in the list; everything else is scoped to that mod's option panel. So
+`.mm-comp-label { ... }` becomes a rule that can only match labels inside your own
+panel, however it was written. `html`, `body`, `:root`, `*` and the window's own
+furniture (`mm-window`, `mm-header`, `mm-footer`, `mm-sidebar`, `mm-root`,
+`mm-backdrop`) are refused outright, as are `@import`, `@media` and `@font-face`.
+
+**Class names worth aiming at.** In the panel: `.mm-comp` is one option's box,
+`.mm-comp-label` its label, `.mm-section` a section header, `.mm-switch` a toggle,
+`.mm-slider-fill` the filled part of a slider, `.mm-dd` a dropdown, `.mm-input` a text
+field, `.mm-key` a hotkey chip. In the list: `.mm-row` your row, `.mm-row-name` its
+text, `.mm-row-dot` the dot beside it, `.mm-badge-new` the new-options counter.
+
+**What it cannot reach today.** The menu's own CSS variables. The colours of the
+new-option flare live in `--mm-flare-strong`, `--mm-flare-soft`, `--mm-flare-none` and
+the three `--mm-sheen-*` beside them, all derived from the accent the player chose, and
+a custom property is not one of the properties above, so setting one has no effect.
+
+A word on what this is for. The window has one look, chosen by the player, and a mod
+that repaints its whole section fights that choice rather than the menu. It is meant
+for a mod with an identity of its own to carry a little of it - a section header in
+its colour, a label picked out - not for a second theme inside somebody else's window.
+
 ## A window of your own
 
 A mod that builds its own API object, with its own settings file, gets a window of its
