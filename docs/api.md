@@ -105,10 +105,17 @@ dropdown and the radio group expect.
 
 Two arguments in that table are worth a sentence. `createNumericStepper(..., manual=True)`
 lets the player type the number instead of only stepping to it.
-`createHotkey(..., float='right')` floats the keys to the right and wraps a long label
-around them - narrow beside them on the first line, full width underneath - where the
-default `'none'` keeps the label in the narrow column to their left. Plain-text labels
-only: a label containing markup keeps the default.
+
+`createHotkey(..., float=)` says where the keys sit when the label is long. The default
+`'none'` leaves the row as it is - label left, keys right - which puts the two at
+opposite ends of a wide column. `'below'` gives the keys a line of their own under the
+label, against the left edge, and `'right'` does the same against the right edge.
+
+The editions differ here, so it is worth knowing which one you are drawing on. In the
+Flash edition `'right'` floats the keys and the label flows around them, narrow beside
+them on the first line and full width underneath. The Gameface edition cannot do that -
+its engine has neither `float` nor `shape-outside`, so text does not flow around
+anything - and `'right'` there means the line of its own described above.
 
 ### Text fields
 
