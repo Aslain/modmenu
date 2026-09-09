@@ -414,7 +414,20 @@ your values rather than the menu's. Call it whenever you like, including while t
 window is open, and the panel follows at once.
 
 It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
-`fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font` and `fontScale`.
+`fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`
+and `rowHighlight`.
+
+`rowHighlight` is how the row under the pointer is marked in the window list:
+
+| Value | Drawn as |
+| --- | --- |
+| `bar` | A bar down the row's left edge. The default, and the same mark a selected mod carries in the list |
+| `rules` | A line above and below the row |
+| `label` | The label itself takes the accent, and nothing else marks the row |
+
+`label` is what the menu drew before 2.0.09 and it has a catch worth knowing: the
+whole signal is the text color, so it disappears when the accent is close to the
+background. The other two keep the label light and mark the row instead.
 That is every row of the settings panel except the menu language and the key that
 opens the window, which belong to the menu as a whole rather than to one window.
 
