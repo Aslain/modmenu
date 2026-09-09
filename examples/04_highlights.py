@@ -109,7 +109,7 @@ def init():
 
     # DEMO ONLY, and a real mod must never do this. Registering for the first time
     # marks every flagged option as already seen, so a fresh install does not greet
-    # anyone with a wall of flares. That is the right behaviour and it also means
+    # anyone with a wall of flares. That is the right behavior and it also means
     # this example would show nothing at all on first run. Clearing the record here
     # puts the window in the state a returning user sees after an update, so the
     # flares and the counter are there to look at the moment the menu opens.

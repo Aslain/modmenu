@@ -7,7 +7,7 @@ from gui.aslainMenu import g_modsSettingsApi, templates
 
 LINKAGE = 'example.controls'
 
-COLOURS = templates.generateOptions(['Red', 'Green', 'Blue'])
+COLORS = templates.generateOptions(['Red', 'Green', 'Blue'])
 
 settings = {}
 
@@ -25,11 +25,11 @@ def template():
         'column1': [
             templates.createLabel('--- Simple ---'),
             templates.createCheckbox('Checkbox', 'check', s.get('check', True)),
-            templates.createDropdown('Dropdown', 'drop', COLOURS, s.get('drop', 0)),
+            templates.createDropdown('Dropdown', 'drop', COLORS, s.get('drop', 0)),
             # fullWidth stretches it to the column instead of fitting its widest option
-            templates.createDropdown('Dropdown, full width', 'dropWide', COLOURS,
+            templates.createDropdown('Dropdown, full width', 'dropWide', COLORS,
                                      s.get('dropWide', 0), fullWidth=True),
-            templates.createRadioButtonGroup('Radio group', 'radio', COLOURS,
+            templates.createRadioButtonGroup('Radio group', 'radio', COLORS,
                                              s.get('radio', 0), inline=True),
             templates.createInput('Text', 'text', s.get('text', 'hello')),
             templates.createInput('Several lines', 'notes', s.get('notes', ''),
@@ -47,9 +47,9 @@ def template():
             templates.createNumericStepper('Stepper', 'num', s.get('num', 10), 0, 100, 1,
                                            manual=True),
             templates.createLabel('--- The rest ---'),
-            templates.createColorChoice('Colour', 'colour', s.get('colour', 'E0A248')),
-            templates.createCheckboxColor('Checkbox and colour', 'markOn',
-                                          s.get('markOn', True), s.get('markColour', 'F23030')),
+            templates.createColorChoice('Color', 'color', s.get('color', 'E0A248')),
+            templates.createCheckboxColor('Checkbox and color', 'markOn',
+                                          s.get('markOn', True), s.get('markColor', 'F23030')),
             templates.createHotkey('Hotkey', 'key', s.get('key', [])),
             templates.createActionButton('doThing', buttonText='Run', label='An action'),
         ],

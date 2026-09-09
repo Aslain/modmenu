@@ -354,6 +354,26 @@ Compare the tuple, never the string. `getVersionTuple()` gives `(2, 0, 0)` and s
 three numbers whatever the release is called, while `getVersion()` returns the same
 text as the package file, padding included.
 
+### Arguments this edition accepts and does not act on
+
+The two editions share one set of template helpers, and a few arguments have no
+counterpart in this frontend. They are accepted, passed through and read by nobody: your
+mod raises no error and sees no effect. They are listed here because an argument that
+fails loudly costs you a minute, and one that fails silently can cost an afternoon.
+
+| Argument | Where | What happens here |
+| --- | --- | --- |
+| `tooltipIcon` | every control | the tooltip is drawn as text, with no icon |
+| `manual` | `createNumericStepper` | the value is always set with the `+` and `-` buttons |
+| `step`, `minRange`, `labelStep`, `labelPostfix` | `createRangeSlider` | the slider is drawn from `min`, `max` and `interval` alone: no division marks under the track, no labels beneath them, and no floor on how close the two knobs may come |
+
+Keep passing them if your mod also runs on Flash. They are part of the signatures on
+purpose, so one template serves both editions and a mod written for Flash runs here
+unchanged.
+
+`float` on `createHotkey` is a different case: both editions act on it, but they draw
+`right` differently. See [Controls](#controls).
+
 ## Restyling your own section
 
 `registerStyle(linkage, css)` hands the window a stylesheet for one mod. Call it

@@ -20,8 +20,8 @@ changed.
 * Search across those mods, an A to Z index for long lists, and tabs inside a mod that
   has many settings
 * Apply without closing, a list of what you changed before you commit it, and undo
-* The window's own look is yours: language, font, text size, panel size, accent colour,
-  background colour, how the options are divided into columns, transparency, and the
+* The window's own look is yours: language, font, text size, panel size, accent color,
+  background color, how the options are divided into columns, transparency, and the
   key that opens it
 * 25 languages
 
@@ -93,7 +93,7 @@ implements his interface so that nobody has to.
 
 **Aslain** built the [enhanced Flash edition](https://github.com/Aslain/modssettingsapi)
 on that foundation, and it is where most of what this window offers was designed first:
-tabs, colour choices, hotkeys, live updates, images, conditions between controls, and
+tabs, color choices, hotkeys, live updates, images, conditions between controls, and
 the translation system. Part of the Python here is that work carried forward and
 extended. The window is not: Flash and Gameface share no runtime, no language and no
 drawing model, so every control had to be built again from nothing against a different
@@ -119,6 +119,23 @@ patched to do it. To keep both on screen, put this in
 ```
 
 If the file is already there, add the key inside the braces it already has.
+
+### Turning the log back on
+
+A release keeps one line in `game.log` saying which version is running, and otherwise
+speaks only when something goes wrong. If you are reporting a problem, or writing a mod
+and want to see what the window makes of it, add:
+
+```json
+{
+  "debug": true
+}
+```
+
+to the same file and restart the game. That brings back where the button was placed and
+measured, which values a mod seeded, how the window resolved its colors, what the
+frontend reported, and the notes about images that did not fit their column. It is the
+same file the menu never writes to, so the key stays where you put it.
 
 **CHAMPi** tested this window while it was being built and shaped a fair part of it.
 A good number of the features here began as his suggestions, and several others took

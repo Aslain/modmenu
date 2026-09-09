@@ -6,7 +6,7 @@ Four mods, each one a step larger than the last.
 | --- | --- |
 | [01_minimal.py](01_minimal.py) | The whole contract in forty lines: register, read the saved values, run |
 | [02_controls.py](02_controls.py) | One of every control type and what each stores |
-| [03_layout.py](03_layout.py) | Tabs, a group behind a master switch, and options that appear or grey out |
+| [03_layout.py](03_layout.py) | Tabs, a group behind a master switch, and options that appear or gray out |
 | [04_highlights.py](04_highlights.py) | Marking options as new, and getting the flares back to look at them |
 
 Copy one into `res_mods/<game version>/scripts/client/gui/mods/` as
