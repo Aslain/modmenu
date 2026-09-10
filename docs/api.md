@@ -456,7 +456,7 @@ It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
 whole signal is the text color, so it disappears when the accent is close to the
 background. The other two keep the label light and mark the row instead.
 
-`wideScreen` is where the window sits on a screen wider than 16:9:
+`wideScreen` is where the window sits on an ultrawide screen:
 
 | Value | Drawn as |
 | --- | --- |
@@ -465,8 +465,10 @@ background. The other two keep the label light and mark the row instead.
 | `right` | The same width, against the right edge |
 | `stretch` | 96.5% of the whole width, the way every window was drawn before 2.0.11 |
 
-On a screen up to 16:9 all four draw the same window, so seeding one changes nothing
-there. The three narrow ones also keep the side margin a 16:9 screen would show, which
+Short of an ultrawide all four draw the same window, so seeding one changes nothing
+there. The window counts a screen as ultrawide from 2.2 to 1: a 16:9 monitor with the
+game in a window, or with the taskbar showing, is a little wider than 16:9 and is not
+one. The three narrow ones also keep the side margin a 16:9 screen would show, which
 puts them exactly on the left, middle or right monitor of three joined into one. Full
 screen, when the player turns it on, takes the whole surface regardless.
 That is every row of the settings panel except the menu language and the key that
