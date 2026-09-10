@@ -441,8 +441,8 @@ your values rather than the menu's. Call it whenever you like, including while t
 window is open, and the panel follows at once.
 
 It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
-`fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`
-and `rowHighlight`.
+`fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`,
+`rowHighlight` and `wideScreen`.
 
 `rowHighlight` is how the row under the pointer is marked in the window list:
 
@@ -455,6 +455,20 @@ and `rowHighlight`.
 `label` is what the menu drew before 2.0.09 and it has a catch worth knowing: the
 whole signal is the text color, so it disappears when the accent is close to the
 background. The other two keep the label light and mark the row instead.
+
+`wideScreen` is where the window sits on a screen wider than 16:9:
+
+| Value | Drawn as |
+| --- | --- |
+| `center` | The default. As wide as the window would be on a 16:9 screen of the same height, in the middle |
+| `left` | The same width, against the left edge |
+| `right` | The same width, against the right edge |
+| `stretch` | 96.5% of the whole width, the way every window was drawn before 2.0.11 |
+
+On a screen up to 16:9 all four draw the same window, so seeding one changes nothing
+there. The three narrow ones also keep the side margin a 16:9 screen would show, which
+puts them exactly on the left, middle or right monitor of three joined into one. Full
+screen, when the player turns it on, takes the whole surface regardless.
 That is every row of the settings panel except the menu language and the key that
 opens the window, which belong to the menu as a whole rather than to one window.
 
