@@ -442,7 +442,14 @@ window is open, and the panel follows at once.
 
 It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
 `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`,
-`rowHighlight` and `wideScreen`.
+`rowHighlight` and `wideScreen`. That is every row of the settings panel except the menu
+language and the key that opens the window, which belong to the menu as a whole rather
+than to one window.
+
+A key a version of the menu does not know is skipped without a word, and the rest of the
+call still applies, so a newer one such as `wideScreen` is safe to pass on any version.
+To tell whether the running menu took it, look for it in `getWindowDefaults()`, which
+holds only the keys that were accepted.
 
 `rowHighlight` is how the row under the pointer is marked in the window list:
 
@@ -471,8 +478,6 @@ game in a window, or with the taskbar showing, is a little wider than 16:9 and i
 one. The three narrow ones also keep the side margin a 16:9 screen would show, which
 puts them exactly on the left, middle or right monitor of three joined into one. Full
 screen, when the player turns it on, takes the whole surface regardless.
-That is every row of the settings panel except the menu language and the key that
-opens the window, which belong to the menu as a whole rather than to one window.
 
 To change a look right now rather than seed one, `applyWindowSettings(save=False,
 **values)` paints the open window without writing anything, which is what a preview

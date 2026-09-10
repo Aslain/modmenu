@@ -134,7 +134,8 @@ and want to see what the window makes of it, add:
 
 to the same file and restart the game. That brings back where the button was placed and
 measured, which values a mod seeded, how the window resolved its colors, what the
-frontend reported, and the notes about images that did not fit their column. It is the
+frontend reported, the notes about images that did not fit their column, and the size
+and shape of the game's surface when the window opens and whenever it changes. It is the
 same file the menu never writes to, so the key stays where you put it.
 
 **CHAMPi** tested this window while it was being built and shaped a fair part of it.
