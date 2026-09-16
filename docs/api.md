@@ -215,12 +215,12 @@ A tooltip can carry blocks:
 ```
 {HEADER}Title{/HEADER}{BODY}What it does{/BODY}
 {ATTENTION}A warning worth reading{/ATTENTION}
-{ROWS}name : what it means{/ROWS}
+{ROWS}name | what it means{/ROWS}
 ```
 
 `{ROWS}` builds a two column table, one row per line, the name and the description
-separated by a colon. Tables can sit inside prose, and a tooltip taller than the screen
-scrolls under the wheel.
+separated by a pipe (`|`). A line without one becomes a heading across both columns.
+Tables can sit inside prose, and a tooltip taller than the screen scrolls under the wheel.
 
 ## Value formats, new in this edition
 
@@ -310,12 +310,6 @@ def onButton(linkage, varName, value):
 
 g_modsSettingsApi.setModTemplate(LINKAGE, template, onSettings, onButton)
 ```
-
-Buttons have a second route that skips the subscription entirely: pass 
-to  or  and it is called for your own buttons only,
-the way  is called for your own settings.
-
-
 
 The instance carries further events beyond these. They drive the window's own machinery,
 such as image and preview traffic, and are not part of what a mod should rely on.
@@ -486,9 +480,16 @@ button in your own GUI needs, and `revertWindowSettings()` puts back what is sto
 ## Translations
 
 ```python
-g_modsSettingsApi.registerModTranslation(linkage, 'de', {'key': 'text'})
 g_modsSettingsApi.registerLanguages(linkage, ['en', 'de', 'pl'])
+g_modsSettingsApi.registerModTranslation(linkage, {'Show damage': 'Schaden anzeigen'})
 ```
 
 The menu shows the language the player picked in its own settings, and offers only the
-languages something can actually display.
+languages something can actually display. `registerLanguages` is how a mod says which
+ones it can.
+
+`registerModTranslation` replaces the text of a mod's labels for display, keyed by the
+original strings. It takes no language code: it is meant for an optional localization
+mod that translates another mod's window while it is installed. Saved values and the
+stored template are untouched, so nothing resets, and repeated calls for the same mod
+add to what is already registered.
