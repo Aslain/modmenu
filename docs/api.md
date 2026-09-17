@@ -137,7 +137,9 @@ def onButton(linkage, varName, value, name=None):
 The name arrives as a fourth argument, and only to a handler that declares one, so a
 handler with three parameters keeps getting three. The buttons never shrink: a row
 short of room wraps its label instead. Placement settings such as `offsetLeft`,
-`offsetTop` and `align` are taken from the first button of the list.
+`offsetTop` and `align` are taken from the first button of the list, and
+`align='right'` puts the buttons at the right edge of the column, so the keys of a
+list of controls line up whatever the labels beside them say.
 
 A button can answer a right click as well. `rightName` is the name its right click
 sends, so one key can move a row one place on a left click and to the top on a right
@@ -150,8 +152,8 @@ templates.createButton(icon=UP_ICON, name='up', rightName='top',
                        tooltip='Up one place. Right click: to the top')
 ```
 
-`buttons`, `name`, `rightName` and `tooltip` are new in 2.0.16 and raise `TypeError` on
-an older menu. Check
+`buttons`, `name`, `rightName`, `tooltip` and `align` on `createButton` are new in 2.0.16
+and raise `TypeError` on an older menu. Check
 `tuple(g_modsSettingsApi.getVersionTuple()) >= (2, 0, 16)` first and fall back to a
 single `button` there.
 
