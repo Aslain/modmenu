@@ -139,7 +139,19 @@ handler with three parameters keeps getting three. The buttons never shrink: a r
 short of room wraps its label instead. Placement settings such as `offsetLeft`,
 `offsetTop` and `align` are taken from the first button of the list.
 
-Both keywords are new in 2.0.16 and raise `TypeError` on an older menu. Check
+A button can answer a right click as well. `rightName` is the name its right click
+sends, so one key can move a row one place on a left click and to the top on a right
+click. `tooltip` shows a hint while the pointer is on the button itself, which is where
+a player learns about the right click. A button without `rightName` does nothing on a
+right click.
+
+```python
+templates.createButton(icon=UP_ICON, name='up', rightName='top',
+                       tooltip='Up one place. Right click: to the top')
+```
+
+`buttons`, `name`, `rightName` and `tooltip` are new in 2.0.16 and raise `TypeError` on
+an older menu. Check
 `tuple(g_modsSettingsApi.getVersionTuple()) >= (2, 0, 16)` first and fall back to a
 single `button` there.
 
