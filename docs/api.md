@@ -117,6 +117,32 @@ them on the first line and full width underneath. The Gameface edition cannot do
 its engine has neither `float` nor `shape-outside`, so text does not flow around
 anything - and `'right'` there means the line of its own described above.
 
+### Several buttons beside one control
+
+`buttons` takes a list of `templates.createButton(...)` results and draws them side by
+side, where a single `button` would sit. Give each one a `name` and the click tells you
+which one was pressed:
+
+```python
+templates.createCheckbox('Aim time', 'showAim', True, buttons=[
+    templates.createButton(width=26, height=26, icon=UP_ICON, name='up'),
+    templates.createButton(width=26, height=26, icon=DOWN_ICON, name='down'),
+])
+
+def onButton(linkage, varName, value, name=None):
+    if name == 'down':
+        ...
+```
+
+The name arrives as a fourth argument, and only to a handler that declares one, so a
+handler with three parameters keeps getting three. The buttons never shrink: a row
+short of room wraps its label instead. Placement settings such as `offsetLeft`,
+`offsetTop` and `align` are taken from the first button of the list.
+
+Both keywords are new in 2.0.16 and raise `TypeError` on an older menu. Check
+`tuple(g_modsSettingsApi.getVersionTuple()) >= (2, 0, 16)` first and fall back to a
+single `button` there.
+
 ### Text fields
 
 ```python
@@ -291,7 +317,7 @@ g_modsSettingsApi.onWindowOpened += onOpened
 | `onWindowOpened()` | The window has opened |
 | `onWindowClosed()` | The window has closed |
 | `onSettingsChanged(linkage, settings)` | Any mod's settings were applied. The callback you passed to `setModTemplate` is subscribed to this one for you |
-| `onButtonClicked(linkage, varName, value)` | A button in a template was pressed, with `value` as `None` |
+| `onButtonClicked(linkage, varName, value, name)` | A button in a template was pressed. `value` is the value of the control the button belongs to, `None` for a button that stands alone. `name` is the button's own name, passed only to a handler that declares a fourth parameter |
 | `onMenuLanguageChanged(code)` | The player changed the menu language. Rebuild your template if your labels are translated |
 | `onResetMod(linkage, defaults)` | A mod was reset to its defaults from its own header |
 | `onReloadMod(linkage, template)` | A mod's template was replaced while the window was open |
