@@ -34,7 +34,7 @@ Every builder returns a plain dictionary. A template is a dictionary of two list
 | `createLabel(text, tooltip, tooltipIcon, useHTML)` | Text, no value |
 | `createImage(source, width, height, ..., align, valign, containerWidth, containerHeight, collapsed, label, labelAlign, atlas, autoFit)` | A picture in the panel |
 | `createEmpty(height)` | Vertical space. Defaults to 20 |
-| `createButton(width, height, text, offsetTop, offsetLeft, icon, iconOffsetTop, iconOffsetLeft)` | A button attached to another control, passed as its `button` argument |
+| `createButton(width, height, text, offsetTop, offsetLeft, icon, iconOffsetTop, iconOffsetLeft, name, rightName, tooltip, align)` | A button beside another control, passed as its `button` argument, or several of them as `buttons` |
 | `createActionButton(varName, buttonText, label, icon, width, ...)` | A button standing on its own row |
 
 Every control builder takes `tooltip`, `tooltipIcon` and `useHTML`. A control with a tooltip gets an information mark next to its label.
@@ -92,7 +92,7 @@ The highlight clears permanently the moment the user clicks the row or changes t
 | `registerCallback(linkage, callback, buttonHandler=None)` | Adds a callback to an already registered mod |
 | `getModSettings(linkage, template)` | The saved values for a template, without registering |
 | `updateModSettings(linkage, newSettings)` | Writes values from your side. The window follows if it is open |
-| `reloadModTemplate(linkage, template, multiColumnTemplate=None)` | Replaces your panel in the open window, for example after a language change |
+| `reloadModTemplate(linkage, template, multiColumnTemplate=None)` | Replaces your panel in the open window, for example after a language change. Build it from the values your mod is running on, and an unapplied change stays on screen |
 | `setModDefaults(linkage, defaults)` | Declares your factory defaults explicitly instead of letting them be derived from the template. These are what the reset button restores |
 | `resetModToDefaults(linkage)` | Resets your controls live. Uncommitted, so Cancel still reverts it |
 | `getModData(linkage, version, default)` | Storage of your own, beside the settings |

@@ -314,6 +314,14 @@ g_modsSettingsApi.registerInputPreview(linkage, varName, callback)
 `registerInputPreview` lets you draw a preview of what a text field would produce, which
 is what a mod with its own markup format uses.
 
+`reloadModTemplate` hands the window a new panel, and the window shows exactly the values
+that panel carries. Build it from the values your mod is running on, not from the ones it
+last saved: a mod that reloads to move a row around would otherwise take back everything
+the player has changed since Apply. Where a reloaded value is the saved one and the player
+is holding a different, unapplied value for that control, the window keeps the player's -
+so a reload for one row leaves the pending changes on the others alone, and Apply still
+has them to save. Rows that come back in a different order slide to their new places.
+
 ## Events
 
 The API carries a set of events you can subscribe to directly. They are plain
