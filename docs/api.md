@@ -152,12 +152,8 @@ templates.createButton(icon=UP_ICON, name='up', rightName='top',
                        tooltip='Up one place. Right click: to the top')
 ```
 
-An icon on a button is toned to grey, the way game artwork is shown in the menu. A mod
-that draws its own icon in the menu's colors passes `iconTint=False` and the icon keeps
-its colors.
-
-`buttons`, `name`, `rightName`, `tooltip`, `align` and `iconTint` on `createButton` are
-new in 2.0.16 and raise `TypeError` on an older menu. Check
+`buttons`, `name`, `rightName`, `tooltip` and `align` on `createButton` are new in 2.0.16
+and raise `TypeError` on an older menu. Check
 `tuple(g_modsSettingsApi.getVersionTuple()) >= (2, 0, 16)` first and fall back to a
 single `button` there.
 
