@@ -77,6 +77,14 @@ Keys of the template:
 | `multiColumnTemplate` | A second layout used when the player picks four columns |
 | `tabs` | A list of `templates.createTab(...)` instead of columns |
 
+Everything the menu stores for you is saved as JSON: the template, the settings, and
+whatever you write with `updateModSettings` or `saveModData`. Keep it to plain data -
+strings, numbers, booleans, `None`, lists and dicts. A tuple or a set is saved as a list
+and comes back as one. A value JSON cannot hold at all, such as a function, an object of
+your own class or text that is not UTF-8, is left out when the menu saves, and the log
+names it by where it sits: `state value settings > my.mod > myKey (MyClass) cannot be
+saved and was left out`. Your other values, and every other mod's, are saved as usual.
+
 ## Controls
 
 Every one of these takes `tooltip` and `useHTML`, and most take `button`, a small action

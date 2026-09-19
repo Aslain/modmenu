@@ -91,12 +91,12 @@ The highlight clears permanently the moment the user clicks the row or changes t
 | `setModTemplate(linkage, template, callback, buttonHandler=None, multiColumnTemplate=None)` | Registers your mod and returns its saved settings right away |
 | `registerCallback(linkage, callback, buttonHandler=None)` | Adds a callback to an already registered mod |
 | `getModSettings(linkage, template)` | The saved values for a template, without registering |
-| `updateModSettings(linkage, newSettings)` | Writes values from your side. The window follows if it is open |
+| `updateModSettings(linkage, newSettings)` | Writes values from your side. The window follows if it is open. Plain JSON values only, see the API guide |
 | `reloadModTemplate(linkage, template, multiColumnTemplate=None)` | Replaces your panel in the open window, for example after a language change. Build it from the values your mod is running on, and an unapplied change stays on screen |
 | `setModDefaults(linkage, defaults)` | Declares your factory defaults explicitly instead of letting them be derived from the template. These are what the reset button restores |
 | `resetModToDefaults(linkage)` | Resets your controls live. Uncommitted, so Cancel still reverts it |
 | `getModData(linkage, version, default)` | Storage of your own, beside the settings |
-| `saveModData(linkage, version, data)` | Writes that storage |
+| `saveModData(linkage, version, data)` | Writes that storage. Plain JSON values only |
 | `setModCollapsed(linkage, collapsed)` | Does nothing here, kept so old code runs. This window shows one mod at a time |
 
 ## Live changes
