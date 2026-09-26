@@ -54,7 +54,6 @@ def onSettingsChanged(linkage, newSettings):
 
 template = {
     'modDisplayName': 'My Mod',
-    'settingsVersion': 1,
     'enabled': True,
     'column1': [...],
     'column2': [...],
@@ -71,11 +70,32 @@ Keys of the template:
 | Key | Meaning |
 | --- | --- |
 | `modDisplayName` | The name in the mod list |
-| `settingsVersion` | Raise it when you change the shape of your settings. The menu then drops what it stored and starts from your new defaults |
+| `settingsVersion` | Optional. Raise it when you want the menu to drop what it stored and start again from your template. Changing your controls does not need it, see below |
 | `enabled` | Adds the on and off switch, and the dot in the list |
 | `column1`, `column2` | The two columns of controls |
 | `multiColumnTemplate` | A second layout used when the player picks four columns |
 | `tabs` | A list of `templates.createTab(...)` instead of columns |
+
+When a template without `settingsVersion` comes with different controls than the ones the
+menu stored, the menu takes the new template and keeps every saved value it can prove is
+still right:
+
+- A control with the same `varName`, type, options and range keeps its value.
+- A dropdown, radio group or step slider whose options changed keeps its value only when
+  the chosen option is still at the same position under the same label.
+- A new control, and any control whose value cannot be carried over, starts from the value
+  in your template, as it would after a reset. A removed control's value is dropped. Keys
+  you stored yourself with `updateModSettings` stay.
+- The reset button restores the values in your new template, or the ones you declared with
+  `setModDefaults`.
+
+Changing only texts, such as labels and tooltips, never touches the saved values.
+`getModSettings` returns `None` when the controls changed, so register with
+`setModTemplate` then, as usual.
+
+With `settingsVersion` nothing of this changes: raising it resets everything to your
+template, and changing controls under the same number keeps the stored template. To have
+the values carried over, leave `settingsVersion` out.
 
 Everything the menu stores for you is saved as JSON: the template, the settings, and
 whatever you write with `updateModSettings` or `saveModData`. Keep it to plain data -
