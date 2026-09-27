@@ -420,9 +420,10 @@ release and the contract it answers to are one and the same. That is deliberate:
 Flash edition reports 1.7.1 under a name this menu also answers to, so starting at
 1.x here would read as older while being newer.
 
-Compare the tuple, never the string. `getVersionTuple()` gives `(2, 0, 0)` and stays
-three numbers whatever the release is called, while `getVersion()` returns the same
-text as the package file, padding included.
+Compare the tuple, never the string. `getVersionTuple()` gives the release as three
+numbers, `(2, 1, 1)` for 2.1.01, while `getVersion()` returns the same text as the package
+file, padding included. Before 2.1.01 the tuple stayed at `(2, 0, 0)`, so a check for a
+later feature fails on those releases and takes its fallback.
 
 ### Arguments this edition accepts and does not act on
 
