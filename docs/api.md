@@ -50,6 +50,8 @@ mode without a settings window can rely on the import failing to tell it to use 
 ```python
 def onSettingsChanged(linkage, newSettings):
     global settings
+    if linkage != 'my.mod':
+        return
     settings = newSettings
 
 template = {
@@ -72,9 +74,28 @@ Keys of the template:
 | `modDisplayName` | The name in the mod list |
 | `settingsVersion` | Optional. Raise it when you want the menu to drop what it stored and start again from your template. Changing your controls does not need it, see below |
 | `enabled` | Adds the on and off switch, and the dot in the list |
-| `column1`, `column2` | The two columns of controls |
-| `multiColumnTemplate` | A second layout used when the player picks four columns |
-| `tabs` | A list of `templates.createTab(...)` instead of columns |
+| `column1` through `column4` | Lists of controls in the columns |
+
+Pass an alternative layout as the `multiColumnTemplate` argument of `setModTemplate`
+or `reloadModTemplate`, not as a key inside your template. The menu uses this layout
+in Auto and four-column mode; two-column mode uses the base template.
+
+Put tabs inside the columns. `createTab` returns a list of controls with their tab name
+attached, so join these lists with `+`:
+
+```python
+template = {
+    'modDisplayName': 'My Mod',
+    'column1': templates.createTab('General', [
+        templates.createCheckbox('Show text', 'showText', True),
+    ]) + templates.createTab('Details', [
+        templates.createCheckbox('Show details', 'showDetails', False),
+    ]),
+}
+```
+
+There is no template-level `tabs` key. Controls without a tab remain visible on each
+tab, unless a tab uses `useFullWidth=True`; then they appear on the extra Ungrouped tab.
 
 When a template without `settingsVersion` comes with different controls than the ones the
 menu stored, the menu takes the new template and keeps every saved value it can prove is
@@ -107,8 +128,8 @@ saved and was left out`. Your other values, and every other mod's, are saved as 
 
 ## Controls
 
-Every one of these takes `tooltip` and `useHTML`, and most take `button`, a small action
-button drawn beside the control.
+The controls below take `tooltip` and `useHTML`, except `createEmpty`, which takes only
+`height`. Most also take `button`, a small action button drawn beside the control.
 
 | Helper | Arguments beyond text and varName |
 | --- | --- |
@@ -131,8 +152,8 @@ button drawn beside the control.
 `templates.generateOptions(entries)` turns a list of strings into the option dicts the
 dropdown and the radio group expect.
 
-Two arguments in that table are worth a sentence. `createNumericStepper(..., manual=True)`
-lets the player type the number instead of only stepping to it.
+In `createNumericStepper`, the player can type a number or use the `+` and `-` buttons.
+The `manual` argument does not change this behavior in the Gameface edition.
 
 `createHotkey(..., float=)` says where the keys sit when the label is long. The default
 `'none'` leaves the row as it is - label left, keys right - which puts the two at
@@ -376,12 +397,19 @@ g_modsSettingsApi.onWindowOpened += onOpened
 Check the linkage in handlers that carry one. Every mod's events reach every subscriber,
 so a mod acting on another mod's linkage is acting on something that is not its own.
 
-Buttons have a second route that spares you that check: pass `buttonHandler` to
-`setModTemplate` or `registerCallback` and it is called for your own buttons only, the
-way `callback` is called for your own settings.
+You can pass `callback` and `buttonHandler` to `setModTemplate` or `registerCallback`
+instead of subscribing to the events yourself. Both routes use the same shared events:
+check `linkage` in these handlers too.
 
 ```python
 def onButton(linkage, varName, value):
+    if linkage != LINKAGE:
+        return
+    ...
+
+def onSettings(linkage, newSettings):
+    if linkage != LINKAGE:
+        return
     ...
 
 g_modsSettingsApi.setModTemplate(LINKAGE, template, onSettings, onButton)
@@ -434,8 +462,8 @@ fails loudly costs you a minute, and one that fails silently can cost an afterno
 
 | Argument | Where | What happens here |
 | --- | --- | --- |
-| `tooltipIcon` | every control | the tooltip is drawn as text, with no icon |
-| `manual` | `createNumericStepper` | the value is always set with the `+` and `-` buttons |
+| `tooltipIcon` | builders that accept it | the tooltip is drawn as text, with no icon |
+| `manual` | `createNumericStepper` | the player can type the value or use the `+` and `-` buttons, regardless of this argument |
 | `step`, `minRange`, `labelStep`, `labelPostfix` | `createRangeSlider` | the slider is drawn from `min`, `max` and `interval` alone: no division marks under the track, no labels beneath them, and no floor on how close the two knobs may come |
 
 Keep passing them if your mod also runs on Flash. They are part of the signatures on

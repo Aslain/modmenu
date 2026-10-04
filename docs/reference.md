@@ -26,7 +26,7 @@ Every builder returns a plain dictionary. A template is a dictionary of two list
 | `createSlider(text, varName, value, min, max, interval, format, ..., width)` | A number on a track |
 | `createStepSlider(text, varName, options, value, format, ..., width)` | A track with named stops rather than a range |
 | `createRangeSlider(text, varName, value, min, max, interval, step, minRange, labelStep, labelPostfix, ...)` | Two handles, a span. `value` is a pair |
-| `createNumericStepper(text, varName, value, min, max, interval, ..., manual)` | A number with plus and minus. `manual=True` lets it be typed |
+| `createNumericStepper(text, varName, value, min, max, interval, ..., manual)` | An editable number with plus and minus. Gameface ignores `manual` |
 | `createInput(text, varName, value, ..., width)` | A text field |
 | `createHotkey(text, varName, value, ..., float)` | A key combination |
 | `createColorChoice(text, varName, value, ..., presets, presetsOnly, enableAlpha)` | A color |
@@ -37,7 +37,14 @@ Every builder returns a plain dictionary. A template is a dictionary of two list
 | `createButton(width, height, text, offsetTop, offsetLeft, icon, iconOffsetTop, iconOffsetLeft, name, rightName, tooltip, align)` | A button beside another control, passed as its `button` argument, or several of them as `buttons` |
 | `createActionButton(varName, buttonText, label, icon, width, ...)` | A button standing on its own row |
 
-Every control builder takes `tooltip`, `tooltipIcon` and `useHTML`. A control with a tooltip gets an information mark next to its label.
+The control builders take `tooltip`, `tooltipIcon` and `useHTML`, with these exceptions:
+
+- `createEmpty` takes only `height`.
+- `createButton` takes `tooltip`, but neither `tooltipIcon` nor `useHTML`.
+- `createActionButton` takes `tooltip` and `useHTML`, but not `tooltipIcon`.
+
+A control with a tooltip gets an information mark next to its label. A `createButton`
+tooltip appears over the button itself.
 
 ### Lower level builders
 
