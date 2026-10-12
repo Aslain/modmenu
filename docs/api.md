@@ -587,8 +587,9 @@ included:
 | `modern` | A thin track under a bigger knob that reaches past both ends of it |
 | `checkbox` | A square box with a smaller square in the accent when ticked |
 
-Without a seed, a player who had the menu before 2.1.03 keeps the modern switch and a new
-player starts with the classic one. Whatever the player picks in the settings panel stays.
+Without a seed, a player who had the menu before 2.1.03 keeps the modern switch until they
+reset the settings panel, and a new player starts with the classic one. Whatever the player
+picks in the settings panel stays.
 
 To change a look right now rather than seed one, `applyWindowSettings(save=False,
 **values)` paints the open window without writing anything, which is what a preview
