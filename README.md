@@ -22,7 +22,7 @@ changed.
 * Apply without closing, a list of what you changed before you commit it, and undo
 * The window's own look is yours: language, font, text size, panel size, accent color,
   background color, how the options are divided into columns, transparency, where it
-  sits on a wide screen, and the key that opens it
+  sits on a wide screen, how its switches are drawn, and the key that opens it
 * 25 languages
 
 ## Installing
