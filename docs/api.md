@@ -541,12 +541,12 @@ window is open, and the panel follows at once.
 
 It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
 `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`,
-`rowHighlight` and `wideScreen`. That is every row of the settings panel except the menu
-language and the key that opens the window, which belong to the menu as a whole rather
-than to one window.
+`rowHighlight`, `wideScreen` and `switchStyle`. That is every row of the settings panel
+except the menu language and the key that opens the window, which belong to the menu as
+a whole rather than to one window.
 
 A key a version of the menu does not know is skipped without a word, and the rest of the
-call still applies, so a newer one such as `wideScreen` is safe to pass on any version.
+call still applies, so a newer one such as `switchStyle` is safe to pass on any version.
 To tell whether the running menu took it, look for it in `getWindowDefaults()`, which
 holds only the keys that were accepted.
 
@@ -577,6 +577,18 @@ game in a window, or with the taskbar showing, is a little wider than 16:9 and i
 one. The three narrow ones also keep the side margin a 16:9 screen would show, which
 puts them exactly on the left, middle or right monitor of three joined into one. Full
 screen, when the player turns it on, takes the whole surface regardless.
+
+`switchStyle` is how every switch in the window is drawn, the one beside your mod's name
+included:
+
+| Value | Drawn as |
+| --- | --- |
+| `classic` | A 40 by 20 track with the knob inside it, the switch the menu had until 2.0.16 |
+| `modern` | A thin track under a bigger knob that reaches past both ends of it |
+| `checkbox` | A square box with a smaller square in the accent when ticked |
+
+Without a seed, a player who had the menu before 2.1.03 keeps the modern switch and a new
+player starts with the classic one. Whatever the player picks in the settings panel stays.
 
 To change a look right now rather than seed one, `applyWindowSettings(save=False,
 **values)` paints the open window without writing anything, which is what a preview

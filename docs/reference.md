@@ -173,7 +173,7 @@ Branding and look are honoured only on a private API instance, meaning a mod tha
 | `getMultiColumnMode()` / `setMultiColumnMode(value)` | How the options area is divided: `auto` (each mod in the columns its own template declares, sharing the row equally), `two` or `four`. Persisted |
 | `canOpenWindow()` | Whether a window can actually be shown. Everything else works without it, but nothing can be opened to look at |
 
-Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font` and `fontScale`. That is every row of the settings panel except the menu language and the key that opens it, which belong to the menu as a whole rather than to one window.
+Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`, `rowHighlight` (`bar`, `rules` or `label`), `wideScreen` (`center`, `left`, `right` or `stretch`) and `switchStyle` (`classic`, `modern` or `checkbox`). That is every row of the settings panel except the menu language and the key that opens it, which belong to the menu as a whole rather than to one window.
 
 ## The window list
 
