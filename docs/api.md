@@ -600,6 +600,21 @@ Without a seed, a player who had the menu before 2.1.03 keeps the modern switch 
 reset the settings panel, and a new player starts with the classic one. Whatever the player
 picks in the settings panel stays.
 
+`modInfo` is where your window shows the author and version your mods give with
+`modAuthor` and `modVersion`:
+
+| Value | Drawn as |
+| --- | --- |
+| `off` | Nothing. The default |
+| `line` | A grey line under the mod's name: by the author and the version |
+| `tag` | The version as a small tag in the accent beside the name, the author on a line under it |
+| `side` | Two lines, author and version, right of the name next to Reset |
+| `icon` | An info mark beside the name, with both in its tooltip |
+
+    api.setWindowDefaults(modInfo='tag')
+
+A mod that sets `showModInfo=False` in its template stays hidden in every one of them.
+
 To change a look right now rather than seed one, `applyWindowSettings(save=False,
 **values)` paints the open window without writing anything, which is what a preview
 button in your own GUI needs, and `revertWindowSettings()` puts back what is stored.
