@@ -14,7 +14,7 @@ Anything not listed here belongs to the window's own machinery. It may exist on 
 
 Every builder returns a plain dictionary. A template is a dictionary of two lists of them, so anything here can be built, stored and passed around like any other data.
 
-A template may also carry `modAuthor` and `modVersion`, text shown under and beside your mod's name once the player turns on Show mod author and version in the menu settings, and `showModInfo=False` to keep them hidden regardless. None of the three counts as a change of controls.
+A template may also carry `modAuthor` and `modVersion`, text shown under and beside your mod's name once the player picks a place for them under Mod author and version in the menu settings, and `showModInfo=False` to keep them hidden regardless. None of the three counts as a change of controls.
 
 `varName` is the key a control's value arrives under in your callback. `linkage` identifies your mod and must stay stable across versions, since it is also the key your saved values live under.
 
@@ -175,7 +175,7 @@ Branding and look are honoured only on a private API instance, meaning a mod tha
 | `getMultiColumnMode()` / `setMultiColumnMode(value)` | How the options area is divided: `auto` (each mod in the columns its own template declares, sharing the row equally), `two` or `four`. Persisted |
 | `canOpenWindow()` | Whether a window can actually be shown. Everything else works without it, but nothing can be opened to look at |
 
-Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`, `rowHighlight` (`bar`, `rules` or `label`), `wideScreen` (`center`, `left`, `right` or `stretch`), `switchStyle` (`classic`, `modern` or `checkbox`) and `modInfo` (`True` or `False`). That is every row of the settings panel except the menu language and the key that opens it, which belong to the menu as a whole rather than to one window.
+Look values accepted by `setWindowDefaults` and `applyWindowSettings`: `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`, `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`, `rowHighlight` (`bar`, `rules` or `label`), `wideScreen` (`center`, `left`, `right` or `stretch`), `switchStyle` (`classic`, `modern` or `checkbox`) and `modInfo` (`off`, `line`, `tag`, `side`, `footer` or `icon`). That is every row of the settings panel except the menu language and the key that opens it, which belong to the menu as a whole rather than to one window.
 
 ## The window list
 
