@@ -75,6 +75,13 @@ Keys of the template:
 | `settingsVersion` | Optional. Raise it when you want the menu to drop what it stored and start again from your template. Changing your controls does not need it, see below |
 | `enabled` | Adds the on and off switch, and the dot in the list |
 | `column1` through `column4` | Lists of controls in the columns |
+| `modAuthor` | Optional text. Your name, shown under the mod's name in its panel |
+| `modVersion` | Optional text. Your mod's version, shown as a small tag beside its name; a version that starts with a digit gets a `v` in front |
+| `showModInfo` | Optional, `True` by default. `False` keeps the two above off screen whatever the player chose |
+
+The author and the version appear only once the player turns on Show mod author and version
+in the menu settings, which is off by default. They are not controls: adding or changing
+them, a new version with every release included, never resets anything.
 
 Pass an alternative layout as the `multiColumnTemplate` argument of `setModTemplate`
 or `reloadModTemplate`, not as a key inside your template. The menu uses this layout
@@ -541,7 +548,7 @@ window is open, and the panel follows at once.
 
 It takes `accent`, `background`, `backgroundAlpha`, `scale`, `transparent`,
 `fullScreen`, `azMode`, `columns` (`auto`, `two` or `four`), `font`, `fontScale`,
-`rowHighlight`, `wideScreen` and `switchStyle`. That is every row of the settings panel
+`rowHighlight`, `wideScreen`, `switchStyle` and `modInfo`. That is every row of the settings panel
 except the menu language and the key that opens the window, which belong to the menu as
 a whole rather than to one window.
 
