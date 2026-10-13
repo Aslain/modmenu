@@ -81,7 +81,7 @@ Keys of the template:
 
 The author and the version appear only once the player picks a place for them under Mod
 author and version in the menu settings: under the name, as a tag beside it, beside the
-buttons, at the bottom of the panel or behind an info icon. It is off by default. They are
+buttons or behind an info icon. It is off by default. They are
 not controls: adding or changing them, a new version with every release included, never
 resets anything.
 
