@@ -79,11 +79,11 @@ Keys of the template:
 | `modVersion` | Optional text. Your mod's version, shown as a small tag beside its name; a version that starts with a digit gets a `v` in front |
 | `showModInfo` | Optional, `True` by default. `False` keeps the two above off screen whatever the player chose |
 
-The author and the version appear only once the player picks a place for them under Mod
-author and version in the menu settings: under the name, as a tag beside it, beside the
-buttons or behind an info icon. It is off by default. They are
-not controls: adding or changing them, a new version with every release included, never
-resets anything.
+In the menu's window the author and the version show under the name, unless the player
+picks another place under Mod author and version in the menu settings: as a tag beside
+the name, beside the buttons, behind an info icon, or nowhere. A window of your own shows
+them only where you seed it, see `modInfo` below. They are not controls: adding or
+changing them, a new version with every release included, never resets anything.
 
 Pass an alternative layout as the `multiColumnTemplate` argument of `setModTemplate`
 or `reloadModTemplate`, not as a key inside your template. The menu uses this layout
@@ -605,7 +605,7 @@ picks in the settings panel stays.
 
 | Value | Drawn as |
 | --- | --- |
-| `off` | Nothing. The default |
+| `off` | Nothing. The default in a window of your own |
 | `line` | A grey line under the mod's name: by the author and the version |
 | `tag` | The version as a small tag in the accent beside the name, the author on a line under it |
 | `side` | Two lines, author and version, right of the name next to Reset |
