@@ -60,13 +60,16 @@ all shapes the window itself.
 | --- | --- |
 | Language | The menu and every mod that offers translations |
 | Font | The face the whole window uses |
+| Switch style | How the on and off switches are drawn: Classic, Modern or Checkbox |
 | Accent color | The color of everything highlighted, including the garage button |
 | Background color | The window's own tone |
 | Option columns | Auto gives each mod the columns its own author laid out, sharing the row equally between them; two or four puts every mod in the same division, when the window is wide enough |
+| Wide screen | Where the window sits on a screen wider than 16:9. Center, Left and Right keep the width it has on a 16:9 screen, Stretch spreads it across the whole width. Changes nothing on a 16:9 screen |
 | A to Z index | The letter index for the mod list: a strip beside it, a row above it, or off |
 | Panel scale | Makes the whole window larger or smaller. On a narrow screen it stops where the header still fits its buttons |
 | Font size | Text only, without moving anything else |
 | Open hotkey | The key that opens the window. Right click it for default and clear |
+| Mod author and version | Where the author and version a mod gives are shown: under the name (the default), as a tag beside the name, beside the buttons, behind an info icon, or not at all |
 | Transparent window | Lets the garage show through the options area |
 | Transparency | How much shows through |
 
