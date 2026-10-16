@@ -512,7 +512,7 @@ furniture (`mm-window`, `mm-header`, `mm-footer`, `mm-sidebar`, `mm-root`,
 `mm-backdrop`) are refused outright, as are `@import`, `@media` and `@font-face`.
 
 **Class names worth aiming at.** In the panel: `.mm-comp` is one option's box,
-`.mm-comp-label` its label, `.mm-section` a section header, `.mm-switch` a toggle,
+`.mm-comp-label` its label, `.mm-switch` a toggle,
 `.mm-slider-fill` the filled part of a slider, `.mm-dd` a dropdown, `.mm-input` a text
 field, `.mm-key` a hotkey chip. In the list: `.mm-row` your row, `.mm-row-name` its
 text, `.mm-row-dot` the dot beside it, `.mm-badge-new` the new-options counter.
@@ -524,8 +524,8 @@ a custom property is not one of the properties above, so setting one has no effe
 
 A word on what this is for. The window has one look, chosen by the player, and a mod
 that repaints its whole section fights that choice rather than the menu. It is meant
-for a mod with an identity of its own to carry a little of it - a section header in
-its color, a label picked out - not for a second theme inside somebody else's window.
+for a mod with an identity of its own to carry a little of it - a label picked out in
+its color - not for a second theme inside somebody else's window.
 
 ## A window of your own
 
