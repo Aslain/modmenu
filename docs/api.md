@@ -490,7 +490,6 @@ again to replace it, pass `None` or an empty string to drop it.
 ```python
 api.registerStyle('my.mod', '''
     .mm-comp-label { color: #C8D8E8; }
-    .mm-section .mm-comp-label { color: #7BA7D0; }
     .mm-row-name { color: #C8D8E8; }
 ''')
 ```
