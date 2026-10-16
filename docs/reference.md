@@ -33,7 +33,7 @@ A template may also carry `modAuthor` and `modVersion`, text shown under your mo
 | `createHotkey(text, varName, value, ..., float)` | A key combination |
 | `createColorChoice(text, varName, value, ..., presets, presetsOnly, enableAlpha)` | A color |
 | `createCheckboxColor(text, varName, value, color, ...)` | A color with its own on and off. The value is a dict of `enabled` and `color` |
-| `createLabel(text, tooltip, tooltipIcon, useHTML)` | Text, no value. Text that starts and ends with dashes, such as `--- General ---`, is drawn as a section header |
+| `createLabel(text, tooltip, tooltipIcon, useHTML)` | Text, no value. Text that starts and ends with dashes, such as `--- General ---`, is drawn as a section header. Long dashes count as well |
 | `createImage(source, width, height, ..., align, valign, containerWidth, containerHeight, collapsed, label, labelAlign, atlas, autoFit)` | A picture in the panel |
 | `createEmpty(height)` | Vertical space. Defaults to 20 |
 | `createButton(width, height, text, offsetTop, offsetLeft, icon, iconOffsetTop, iconOffsetLeft, name, rightName, tooltip, align)` | A button beside another control, passed as its `button` argument, or several of them as `buttons` |
