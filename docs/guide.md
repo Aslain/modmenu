@@ -96,6 +96,8 @@ instead, so you are more likely to meet this when you installed the file by hand
 | CTRL and P | Open the window, or close it when nothing is pending |
 | CTRL and F | Jump to the search box |
 | Up and Down | Move through the mod list |
+| Page Up and Page Down | Move through the mod list a page at a time |
+| Home and End | Jump to the first or the last mod |
 | Left and Right | Move the slider under the cursor |
 | ESC | Step back, then close the window |
 | Right click | Options for hotkeys and color slots |
