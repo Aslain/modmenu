@@ -30,6 +30,8 @@ Mods are listed down the left. Click one and its options fill the panel on the r
 * **Apply** writes your changes and leaves the window open
 * **Save and close** does both
 * **Cancel** throws away everything since the last Apply
+* With changes waiting, Cancel, the close cross, ESC and the open key ask first: leave
+  without saving, save and leave, or go back. ESC in that question leaves without saving
 * The two arrows at the bottom left step back and forward through what you changed
 * The counter beside them opens the full list of what is waiting to be saved
 * The counter beside the mod name says how many of its settings are waiting
@@ -93,13 +95,13 @@ instead, so you are more likely to meet this when you installed the file by hand
 
 | Key | What it does |
 | --- | --- |
-| CTRL and P | Open the window, or close it when nothing is pending |
+| CTRL and P | Open the window, or close it (it asks first when changes are waiting) |
 | CTRL and F | Jump to the search box |
 | Up and Down | Move through the mod list |
 | Page Up and Page Down | Move through the mod list a page at a time |
 | Home and End | Jump to the first or the last mod |
 | Left and Right | Move the slider under the cursor |
-| ESC | Step back, then close the window |
+| ESC | Step back, then close the window (it asks first when changes are waiting) |
 | Right click | Options for hotkeys and color slots |
 
 The question mark in the window's header shows this list with your own key bindings in
