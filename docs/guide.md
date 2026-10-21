@@ -28,9 +28,9 @@ Mods are listed down the left. Click one and its options fill the panel on the r
 ## Saving
 
 * **Apply** writes your changes and leaves the window open
+* **Apply** also keeps the window's own look, set in MENU SETTINGS
 * **Save and close** does both
 * **Cancel** throws away everything since the last Apply
-* **Apply** also keeps the window's own look, set in MENU SETTINGS
 * With changes waiting, Cancel, the close cross, ESC and the open key ask first: leave
   without saving, save and leave, or go back. ESC in that question leaves without saving.
   The window's own look counts too, and the question links to the full list
