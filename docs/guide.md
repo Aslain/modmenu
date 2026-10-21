@@ -30,10 +30,13 @@ Mods are listed down the left. Click one and its options fill the panel on the r
 * **Apply** writes your changes and leaves the window open
 * **Save and close** does both
 * **Cancel** throws away everything since the last Apply
+* **Apply** also keeps the window's own look, set in MENU SETTINGS
 * With changes waiting, Cancel, the close cross, ESC and the open key ask first: leave
-  without saving, save and leave, or go back. ESC in that question leaves without saving
+  without saving, save and leave, or go back. ESC in that question leaves without saving.
+  The window's own look counts too, and the question links to the full list
 * The two arrows at the bottom left step back and forward through what you changed
-* The counter beside them opens the full list of what is waiting to be saved
+* The counter beside them opens the full list of what is waiting to be saved, the window's
+  own look included
 * The counter beside the mod name says how many of its settings are waiting
 
 ![Everything waiting to be saved](img/unsaved-changes.png)
