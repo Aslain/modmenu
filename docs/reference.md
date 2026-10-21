@@ -121,7 +121,7 @@ The highlight clears permanently the moment the user clicks the row or changes t
 
 | Method | What it does |
 | --- | --- |
-| `updateImage(linkage, varName, source, width, height, removeImage=False, label=None)` | Replaces a picture while the window is open |
+| `updateImage(linkage, varName, source, width, height, removeImage=False, label=None)` | Replaces a picture while the window is open. The old picture stays until the new one has loaded. `source` may be a base64 `data:` URI |
 | `updateImageAtlas(linkage, varName, atlasSource, frameWidth, frameHeight, columns, count, fps, loop=True, width, height)` | An animated picture from a sprite sheet |
 | `replayLiveImages()` | Re-sends the last picture for every live preview. The window calls this itself after a rebuild |
 | `registerInputPreview(linkage, varName, handler)` | Offers a live preview of what a text field becomes once your mod has converted it |

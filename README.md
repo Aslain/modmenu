@@ -19,7 +19,8 @@ changed.
   garage, rather than each hiding a panel of its own
 * Search across those mods, an A to Z index for long lists, and tabs inside a mod that
   has many settings
-* Apply without closing, a list of what you changed before you commit it, and undo
+* Apply without closing, a list of what you changed before you commit it, undo, and a
+  question before you leave with changes unsaved
 * The author and version of each mod that tells them, under its name or wherever you prefer
 * The window's own look is yours: language, font, text size, panel size, accent color,
   background color, how the options are divided into columns, transparency, where it

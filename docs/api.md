@@ -364,13 +364,22 @@ for both keeps the token there.
 a fixed box with `containerWidth` and `containerHeight`. A picture too large for the room
 is scaled down and marked with a small badge saying so.
 
+The window reads a picture's own size from its header before drawing it: a file, a
+packaged path, or a picture you draw yourself and send as a base64 `data:` URI (PNG or
+JPEG). A picture is never distorted. Given a box of other proportions it is letterboxed,
+and in a narrow column it shrinks on both sides alike.
+
 An `<img>` inside a label or a tooltip is drawn at the size you declare, provided you
 declare **both** width and height. With one of the two the engine cannot work out the
 other and draws the picture at its own size.
 
 For animation, `atlas={'source': ..., 'frameWidth': ..., 'frameHeight': ..., 'columns':
 ..., 'count': ..., 'fps': ..., 'loop': True}` plays a sprite sheet, and
-`updateImageAtlas` swaps it while the window is open.
+`updateImageAtlas` swaps it while the window is open. An animation is drawn at the width
+and height it was given (those of `createImage`, or the last two arguments of
+`updateImageAtlas`), at its frame size when none were given, and in a narrow column it
+only shrinks. A slot built around a still picture and switched to an animation takes the
+animation's size, not the still's.
 
 ### An image slot that starts empty
 
@@ -387,11 +396,17 @@ g_modsSettingsApi.reloadModTemplate(linkage, template)
 g_modsSettingsApi.registerLiveSettingsChange(linkage, callback, fullsettings=False)
 g_modsSettingsApi.updateImage(linkage, varName, source, width, height)
 g_modsSettingsApi.registerInputPreview(linkage, varName, callback)
+g_modsSettingsApi.setControlValue(linkage, varName, value)
 ```
 
 `registerLiveSettingsChange` calls you as the player moves a slider, before Apply.
 `registerInputPreview` lets you draw a preview of what a text field would produce, which
 is what a mod with its own markup format uses.
+
+`updateImage` with a new picture for a slot that already shows one keeps the old picture
+on screen until the new one has loaded, so a preview you redraw on every step of a
+slider does not blink. `setControlValue` sets a control as if the player had picked the
+value, see "Stepping a list from its keys" above.
 
 `reloadModTemplate` hands the window a new panel, and the window shows exactly the values
 that panel carries. Build it from the values your mod is running on, not from the ones it
