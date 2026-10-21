@@ -215,6 +215,27 @@ and raise `TypeError` on an older menu. Check
 `tuple(g_modsSettingsApi.getVersionTuple()) >= (2, 0, 16)` first and fall back to a
 single `button` there.
 
+### Stepping a list from its keys
+
+A click hands you the value the window holds, and that value changes only when the
+player picks another one. Keys that step through a dropdown therefore set the new value
+with `setControlValue`. The window takes it exactly as a pick of the player's own: the
+control shows it, the undo arrows and Apply have it, `registerLiveSettingsChange` hears
+about it, and the next click counts from it.
+
+```python
+def onButton(linkage, varName, value, name=None):
+    if varName == 'icon' and name in ('prev', 'next'):
+        step = -1 if name == 'prev' else 1
+        g_modsSettingsApi.setControlValue(linkage, varName, (value + step) % len(ICONS))
+```
+
+It acts on the open window only. It returns `False` and changes nothing when the window
+is closed, the control is unknown, or the value does not fit it: an index outside the
+list, anything but `True` or `False` for a checkbox, anything but a number for a slider.
+Hotkeys keep their own calls. `setControlValue` is new in 2.1.06, so check
+`hasattr(g_modsSettingsApi, 'setControlValue')` before showing such keys.
+
 ### Text fields
 
 ```python

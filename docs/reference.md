@@ -104,6 +104,7 @@ The highlight clears permanently the moment the user clicks the row or changes t
 | `reloadModTemplate(linkage, template, multiColumnTemplate=None)` | Replaces your panel in the open window, for example after a language change. Build it from the values your mod is running on, and an unapplied change stays on screen |
 | `setModDefaults(linkage, defaults)` | Declares your factory defaults explicitly instead of letting them be derived from the template. These are what the reset button restores |
 | `resetModToDefaults(linkage)` | Resets your controls live. Uncommitted, so Cancel still reverts it |
+| `setControlValue(linkage, varName, value)` | Sets one control in the open window as if the player picked the value. Uncommitted, so Cancel still reverts it. `False` when the window is closed or the value does not fit the control. New in 2.1.06 |
 | `getModData(linkage, version, default)` | Storage of your own, beside the settings |
 | `saveModData(linkage, version, data)` | Writes that storage. Plain JSON values only |
 | `setModCollapsed(linkage, collapsed)` | Does nothing here, kept so old code runs. This window shows one mod at a time |
