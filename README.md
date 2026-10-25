@@ -38,6 +38,11 @@ Mod Menu needs the [OpenWG Gameface](https://gitlab.com/openwg/wot.gameface) loa
 version 1.1.6 or newer, which most mod packs already install. Without it the menu
 says so in `python.log` and no window opens.
 
+On Lesta's client the file goes into `mods/<game version>/` under the `.mtmod`
+extension: rename `aslain.modmenu_<version>.wotmod` to `aslain.modmenu_<version>.mtmod`.
+The menu's button sits in the garage footer, left of the statistics button, and on the
+login screen.
+
 ## Using it
 
 The [guide](docs/guide.md) walks through the window: opening it, finding a mod, what
