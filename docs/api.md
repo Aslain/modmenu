@@ -175,6 +175,12 @@ them on the first line and full width underneath. The Gameface edition cannot do
 its engine has neither `float` nor `shape-outside`, so text does not flow around
 anything - and `'right'` there means the line of its own described above.
 
+From 2.1.10 a hotkey can also be a mouse button past the main three: back, forward and
+beyond, shown as MOUSE 4 to MOUSE 8 and stored as `Keys.KEY_MOUSE3` to
+`Keys.KEY_MOUSE7`, with any CTRL, ALT or SHIFT held. Left, right and middle are never
+taken, as they click the window. `checkKeyset` answers for them as for keys, so a mod
+that checks its hotkey on the game's key events needs no change.
+
 ### Several buttons beside one control
 
 `buttons` takes a list of `templates.createButton(...)` results and draws them side by
