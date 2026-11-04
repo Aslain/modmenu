@@ -21,7 +21,8 @@ changed.
   has many settings
 * Apply without closing, a list of what you changed before you commit it, undo, and a
   question before you leave with changes unsaved
-* The author and version of each mod that tells them, under its name or wherever you prefer
+* The author and version of each mod that tells them, under its name or wherever you prefer,
+  with a link to the mod's page when it gives one
 * The window's own look is yours: language, font, text size, panel size, accent color,
   background color, how the options are divided into columns, transparency, where it
   sits on a wide screen, how its switches are drawn, and the key that opens it

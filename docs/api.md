@@ -77,14 +77,15 @@ Keys of the template:
 | `column1` through `column4` | Lists of controls in the columns |
 | `modAuthor` | Optional text. Your name, shown under the mod's name in its panel |
 | `modVersion` | Optional text. Your mod's version, shown as a small tag beside its name; a version that starts with a digit gets a `v` in front |
-| `modUrl` | Optional web address, `https://` or `http://`, for example where players report bugs. A small mark after the author and version, wherever they are shown and only while they are; its tooltip shows the address and a click opens it in the player's browser. Anything else is ignored |
+| `modUrl` | Optional web address, `https://` or `http://`, for example where players report bugs. A small mark beside the author and version, wherever they are shown and only while they are; its tooltip shows the address and a click opens it in the player's browser. Without it, or with anything that is not such an address, there is no mark |
 | `showModInfo` | Optional, `True` by default. `False` keeps the three above off screen whatever the player chose |
 
 In the menu's window the author and the version show under the name, unless the player
 picks another place under Mod author and version in the menu settings: as a tag beside
 the name, beside the buttons, behind an info icon, or nowhere. A window of your own shows
 them only where you seed it, see `modInfo` below. `modUrl` goes with them, as a mark
-after the author and version in whichever place that is. They are not controls: adding
+beside the author and version in whichever place that is: after them under the name, before
+them beside the buttons, next to the info icon behind it. They are not controls: adding
 or changing them, a new version with every release included, never resets anything.
 
 Pass an alternative layout as the `multiColumnTemplate` argument of `setModTemplate`

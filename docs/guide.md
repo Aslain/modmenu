@@ -74,7 +74,7 @@ all shapes the window itself.
 | Panel scale | Makes the whole window larger or smaller. On a narrow screen it stops where the header still fits its buttons |
 | Font size | Text only, without moving anything else |
 | Open hotkey | The key that opens the window. Right click it for default and clear |
-| Mod author and version | Where the author and version a mod gives are shown: under the name (the default), as a tag beside the name, beside the buttons, behind an info icon, or not at all |
+| Mod author and version | Where the author and version a mod gives are shown: under the name (the default), as a tag beside the name, beside the buttons, behind an info icon, or not at all. A mod that gives the address of its page gets a small mark beside them; a click opens the page in your browser |
 | Transparent window | Lets the garage show through the options area |
 | Transparency | How much shows through |
 
