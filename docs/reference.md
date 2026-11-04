@@ -14,7 +14,7 @@ Anything not listed here belongs to the window's own machinery. It may exist on 
 
 Every builder returns a plain dictionary. A template is a dictionary of two lists of them, so anything here can be built, stored and passed around like any other data.
 
-A template may also carry `modAuthor` and `modVersion`, text shown under your mod's name in the menu's window, or wherever the player moves them under Mod author and version in the menu settings, and `showModInfo=False` to keep them hidden regardless. None of the three counts as a change of controls.
+A template may also carry `modAuthor` and `modVersion`, text shown under your mod's name in the menu's window, or wherever the player moves them under Mod author and version in the menu settings, `modUrl`, the web address of your mod's page shown as a small mark beside them that opens in the player's browser, and `showModInfo=False` to keep them hidden regardless. None of the four counts as a change of controls.
 
 `varName` is the key a control's value arrives under in your callback. `linkage` identifies your mod and must stay stable across versions, since it is also the key your saved values live under.
 
