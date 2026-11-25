@@ -126,9 +126,12 @@ Changing only texts, such as labels and tooltips, never touches the saved values
 `getModSettings` returns `None` when the controls changed, so register with
 `setModTemplate` then, as usual.
 
-With `settingsVersion` nothing of this changes: raising it resets everything to your
-template, and changing controls under the same number keeps the stored template. To have
-the values carried over, leave `settingsVersion` out.
+With `settingsVersion`, raising it resets everything to your template. Changing controls
+under the same number takes your new template and keeps the saved values as they are,
+because you did not ask for a reset: only a value the new control cannot show, such as
+one whose control changed its type or an option index past the new list, starts from
+your template. New controls take their defaults from your template, and the existing
+defaults stay. A lower number than the stored one keeps the stored template.
 
 Everything the menu stores for you is saved as JSON: the template, the settings, and
 whatever you write with `updateModSettings` or `saveModData`. Keep it to plain data -
